@@ -52,7 +52,7 @@ export default function Home() {
         }))
       }else{
         dispatch(logoutUser())
-        dispatch(fetchTodos(user.uid))
+        dispatch(fetchTodos(user?.uid))
       }
       setLoading(false)
     })

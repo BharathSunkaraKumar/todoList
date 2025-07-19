@@ -39,6 +39,22 @@ export const deleteTodo = createAsyncThunk(
     }
 )
 
+export const updateTodo = createAsyncThunk(
+    'todos/updateTodo',
+    async({id, newText}, {getState, rejectWithValue}) => {
+        const user = getState().auth.user;
+        if(!user) return rejectWithValue('user not logged in')
+        try{
+            const todoRef = doc(db,'users', user.uid, 'todos', id);
+            await updateDoc(todoRef, {text: newText});
+            return {id, newText}
+        }catch(error) {
+            console.log(error)
+            return rejectWithValue(error.message)
+        }
+    }
+)
+
 const todoSlice = createSlice({
     name: 'todos',
     initialState: {
@@ -65,6 +81,13 @@ const todoSlice = createSlice({
             })
             .addCase(deleteTodo.fulfilled, (state, action) => {
                 state.items = state.items.filter(todos => todos.id != action.payload)
+            })
+            .addCase(updateTodo.fulfilled, (state, action) => {
+                const {id, newText} = action.payload;
+                const todo = state.items.find((item) => item.id === id);
+                if(todo) {
+                    todo.text = newText
+                }
             })
     }
 })
