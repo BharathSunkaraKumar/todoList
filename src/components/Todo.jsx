@@ -58,12 +58,13 @@ export default function Todo() {
   }
   return (
     <div>
-        <h1 className='font-bold text-3xl text-center my-10'>Todo List</h1>
+        {/* <h1 className='font-bold text-3xl text-center my-10'>Todo List</h1> */}
+        <h1 className='text-center my-10 text-4xl font-manrope font-bold leading-snug text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-pink-600 to-purple-600'>My Todo List</h1>
         <div className='flex'>
             <input className='px-2 border-2 py-4 w-full' type='text' value={text} onChange={(e)=>setText(e.target.value)} name='todo' placeholder='enter todo'/>
             {
               Editing.isEditing ? (
-                <button onClick={handleSave} className='hover:bg-gray-900 px-4 py-2 bg-lime-500 text-black'>save</button>
+                <button onClick={handleSave} className='hover:bg-lime-600 px-4 py-2 bg-lime-500 text-black'>save</button>
               ) : (
                 <button onClick={handleAdd} className='hover:bg-gray-900 px-4 py-2 bg-black text-white'>Add Todo</button>
               )

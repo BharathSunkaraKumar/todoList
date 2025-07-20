@@ -73,9 +73,9 @@ export default function Home() {
             <button onClick={handleLogOut} className='bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-md'>Logout</button>
           </div>
           <div className='flex justify-center mb-5'>
-            <img className="w-16 h-16 rounded-full object-cover border" src={userDetails.photo ||'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'} alt={userDetails.name} referrerPolicy='no-referrer' />
+            <img className="w-16 h-16 rounded-full object-cover border ring-4 ring-blue-500" src={userDetails.photo ||'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'} alt={userDetails.name} referrerPolicy='no-referrer' />
           </div>
-          <h1 className='text-center text-2xl font-semibold text-blue-500'>{userDetails.name}</h1>
+          <h1 className='text-center text-2xl font-semibold text-blue-600'>{userDetails.name}</h1>
           <Todo />
           {/* {console.log(userDetails)} */}
         </>
